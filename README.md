@@ -1,7 +1,6 @@
 # Language App Components
 
-[![Release](https://jitpack.io/v/User/Repo.svg)]
-(https://jitpack.io/JordanDysart/language-app-components)
+[![Release](https://jitpack.io/v/JordanDysart/language-app-components.svg)](https://jitpack.io/#JordanDysart/language-app-components)
 
 #### Goal
 
