@@ -11,18 +11,15 @@ import com.jordandysart.languageappcomponents.R;
 
 import org.greenrobot.eventbus.EventBus;
 
-
-public class LanguageViewHolder extends RecyclerView.ViewHolder {
+public class DirectoryViewHolder extends RecyclerView.ViewHolder {
 
     private static final String TAG = LanguageViewHolder.class.getSimpleName();
 
     // each data item is just a string in this case
     private TextView textView;
-    private Integer audioPath;
+    private Integer directoryIndex;
 
-
-
-    public LanguageViewHolder(TextView itemView, Drawable buttonShape) {
+    public DirectoryViewHolder(TextView itemView, Drawable buttonShape) {
         super(itemView);
         textView = itemView;
 
@@ -30,7 +27,7 @@ public class LanguageViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Element " + getAdapterPosition() + " clicked.");
-                EventBus.getDefault().post(new AudioButtonEvent(audioPath));
+                EventBus.getDefault().post(new DirectoryViewHolder.DirectEvent(getAdapterPosition()));
 
             }
         });
@@ -43,14 +40,10 @@ public class LanguageViewHolder extends RecyclerView.ViewHolder {
         return textView;
     }
 
-    public void setAudioPath(Integer audioPath) {
-        this.audioPath = audioPath;
-    }
-
-    public class AudioButtonEvent{
+    public class DirectEvent {
         Integer data;
 
-        AudioButtonEvent(Integer data){
+        DirectEvent(Integer data){
             this.data=data;
         }
 
@@ -58,5 +51,4 @@ public class LanguageViewHolder extends RecyclerView.ViewHolder {
             return data;
         }
     }
-
 }

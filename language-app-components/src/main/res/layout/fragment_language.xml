@@ -6,6 +6,8 @@
     android:orientation="horizontal"
     tools:context=".fragment.CategoryFragment">
 
+
+<!--    I don't think this is being used at the moment-->
     <TextView
         android:id="@+id/item_number"
         android:layout_width="wrap_content"

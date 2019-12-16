@@ -76,7 +76,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<LanguageViewHolder> {
 
         Context context = viewGroup.getContext();
         TextView v = (TextView) LayoutInflater.from(context)
-                .inflate(R.layout.button_view_category, viewGroup, false);
+                .inflate(R.layout.button_view_language, viewGroup, false);
         Drawable buttonShape = ResourcesCompat.getDrawable(viewGroup.getResources(), R.drawable.button_shape, null);
 
         return new LanguageViewHolder(v, buttonShape);
