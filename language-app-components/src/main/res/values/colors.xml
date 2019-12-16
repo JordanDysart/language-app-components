@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#34628B</color>
+    <color name="colorPrimaryDark">#348DA3</color>
+    <color name="colorAccent">#BF6334</color>
+
+    <!-- Design Colours-->
+    <color name="colourBackground">#FFE8CF</color>
+    <color name="colourTextPrimary">#2B2C7C</color>
+
+    <color name="colourButton1">#FFD957</color>
+    <color name="colourButton2">#FFBD64</color>
+    <color name="colourButton3">#E88F4F</color>
+    <color name="colourButton4">#E8B64D</color>
+    <color name="colourButton5">#94D0A7</color>
+    <color name="colourButton6">#84C87F</color>
+    <color name="colourButton7">#A5D17A</color>
+    <color name="colourButton8">#ACD370</color>
+    <color name="colourButton9">#E3E87B</color>
+    <color name="colourButton10">#6FC6F0</color>
+    <color name="colourButton11">#648FCA</color>
+    <color name="colourButton12">#717EBD</color>
+    <color name="colourButton13">#6661AB</color>
+    <color name="colourButton14">#8468AD</color>
+    <color name="colourButton15">#EF5623</color>
+    <color name="colourButton16">#E57025</color>
+
+    <array name="rainbow">
+        <item>@color/colourButton1</item>
+        <item>@color/colourButton2</item>
+        <item>@color/colourButton3</item>
+        <item>@color/colourButton4</item>
+        <item>@color/colourButton5</item>
+        <item>@color/colourButton6</item>
+        <item>@color/colourButton7</item>
+        <item>@color/colourButton8</item>
+        <item>@color/colourButton9</item>
+        <item>@color/colourButton10</item>
+        <item>@color/colourButton11</item>
+        <item>@color/colourButton12</item>
+        <item>@color/colourButton13</item>
+        <item>@color/colourButton14</item>
+        <item>@color/colourButton15</item>
+        <item>@color/colourButton16</item>
+    </array>
+
+</resources>
