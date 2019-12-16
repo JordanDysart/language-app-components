@@ -7,21 +7,31 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.jordandysart.languageappcomponents.R;
+import com.jordandysart.languageappcomponents.adapter.CategoryAdapter;
+
+import java.util.ArrayList;
 
 
 /**
  * A fragment representing a list of Items.
  * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
- * interface.
+ * This will not have a interface, the buttons will use an event
  */
-public class CategoryFragment extends Fragment implements CategoryAdapter.categorySelect {
+public class CategoryFragment extends Fragment {
 
-    private static final String ARG_COLUMN_COUNT = "column-count";
+    private static final String ARG_COLUMN_COUNT  = "column-count";
+    private static final String ARG_CATEGORY_INFO = "string-info";
+    private static final String ARG_CATEGORY_AUDIO= "audio-path";
+
+
     private int mColumnCount = 2;
-    private OnListFragmentInteractionListener mListener;
+    private String[] mData   = {"No Data Loaded", "no data loaded"};
+    private ArrayList<Integer> mAudio;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -30,12 +40,12 @@ public class CategoryFragment extends Fragment implements CategoryAdapter.catego
     public CategoryFragment() {
     }
 
-    // TODO: Customize parameter initialization
-    @SuppressWarnings("unused")
-    public static CategoryFragment newInstance(int columnCount) {
+    public static CategoryFragment newInstance(int columnCount, String[] data, ArrayList<Integer> audioFiles) {
         CategoryFragment fragment = new CategoryFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
+        args.putStringArray(ARG_CATEGORY_INFO, data);
+        args.putIntegerArrayList(ARG_CATEGORY_AUDIO, audioFiles);
         fragment.setArguments(args);
         return fragment;
     }
@@ -46,70 +56,32 @@ public class CategoryFragment extends Fragment implements CategoryAdapter.catego
 
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
+            mData = getArguments().getStringArray(ARG_CATEGORY_INFO);
+            mAudio = getArguments().getIntegerArrayList(ARG_CATEGORY_AUDIO);
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.button_view_category, container, false);
+        View view = inflater.inflate(R.layout.fragment_category, container, false);
+
+        RecyclerView rv = view.findViewById(R.id.recycler_view_category);
 
         // Set the adapter
-        if (view instanceof RecyclerView) {
+        if (null != rv) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
+
             if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
+                rv.setLayoutManager(new LinearLayoutManager(context));
             } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            String[] dummyStrings = new String[25];
-            int i = 0;
-            for (CategoryAudio item : Categories.ITEMS) {
-                dummyStrings[i++] = item.toString();
+                rv.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
 
-            recyclerView.setAdapter(new CategoryAdapter(context, dummyStrings,null,  this));
+            rv.setAdapter(new CategoryAdapter( mData, mAudio));
         }
 
         return view;
     }
 
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnListFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void playAudio(Integer audioPath);
-    }
-
-    @Override
-    public void onSelect(Integer audioPath) {
-        mListener.playAudio(audioPath);
-    }
 }

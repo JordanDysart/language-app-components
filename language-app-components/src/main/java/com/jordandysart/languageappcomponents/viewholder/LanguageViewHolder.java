@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.jordandysart.languageappcomponents.R;
 
+import org.greenrobot.eventbus.EventBus;
+
 
 public class LanguageViewHolder extends RecyclerView.ViewHolder {
 
@@ -18,27 +20,20 @@ public class LanguageViewHolder extends RecyclerView.ViewHolder {
     // each data item is just a string in this case
     private TextView textView;
     private Drawable buttonShape;
-    private ButtonPress buttonPress;
     private Integer audioPath;
 
-    public interface ButtonPress{
-        void onPress(Integer position);
-    }
 
-    public LanguageViewHolder( TextView itemView, Drawable buttonShape,
-                                 ButtonPress listener, Integer audioPath) {
+
+    public LanguageViewHolder(TextView itemView, Drawable buttonShape) {
         super(itemView);
-        buttonPress = listener;
         textView = itemView;
         this.buttonShape = buttonShape;
-        this.audioPath = audioPath;
 
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Element " + getAdapterPosition() + " clicked.");
-                buttonPress.onPress(getAudioPath());
-
+                EventBus.getDefault().post(new AudioButtonEvent(audioPath));
 
             }
         });
@@ -55,8 +50,20 @@ public class LanguageViewHolder extends RecyclerView.ViewHolder {
         return audioPath;
     }
 
+    public void setAudioPath(Integer audioPath) {
+        this.audioPath = audioPath;
+    }
+
     void setButtonColour(int colour) {
         buttonShape.setColorFilter(colour, PorterDuff.Mode.SRC);
+    }
+
+    public class AudioButtonEvent{
+        public Integer data;
+
+        AudioButtonEvent(Integer data){
+            this.data=data;
+        }
     }
 
 }
