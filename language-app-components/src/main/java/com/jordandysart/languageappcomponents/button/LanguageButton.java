@@ -19,16 +19,23 @@ public class LanguageButton {
         return audioPath;
     }
 
+    public void setAudioPath(Integer audioPath) {
+        this.audioPath = audioPath;
+    }
+
     public String getPrimaryText() {
         return primaryText;
     }
 
-    // TODO: turn this into a test
-//    public LanguageButton[] generateStupidTestData() {
-//        LanguageButton[] stupidLanguageButtonArray = new LanguageButton[stringTesting.length];
-//        for (int i = 0; i < audioTesting.length; i++) {
-//            stupidLanguageButtonArray[i] = new LanguageButton(audioTesting[i], stringTesting[i]);
-//        }
-//        return stupidLanguageButtonArray;
-//    }
+    public void setPrimaryText(String primaryText) {
+        this.primaryText = primaryText;
+    }
+
+    public String getSecondaryText() {
+        return secondaryText;
+    }
+
+    public void setSecondaryText(String secondaryText) {
+        this.secondaryText = secondaryText;
+    }
 }
