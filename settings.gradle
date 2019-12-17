@@ -1,2 +1,2 @@
-include ':app', ':language-app-components'
+include 'app', ':language-app-components'
 rootProject.name='Language App Example'
