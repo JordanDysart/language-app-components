@@ -1,5 +1,7 @@
 # Language App Components
 
+[![Release](https://jitpack.io/v/JordanDysart/language-app-components.svg)](https://jitpack.io/#JordanDysart/language-app-components)
+
 #### Goal
 
 Instead of ever rebuilding a project I want to generate them, this library should help me do that.
