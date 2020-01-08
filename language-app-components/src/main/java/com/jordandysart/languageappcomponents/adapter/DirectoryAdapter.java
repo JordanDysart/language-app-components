@@ -17,13 +17,21 @@ public class DirectoryAdapter extends RecyclerView.Adapter<DirectoryViewHolder> 
 
     private String[] directories;
     private Integer[] icons;
+    private Integer layoutPath;
 
     public DirectoryAdapter(String[] directories) {
         this.directories = directories;
+        this.layoutPath = R.layout.button_view_category;
     }
     public DirectoryAdapter(String[] directories, Integer[] icons) {
         this.directories = directories;
         this.icons = icons;
+        this.layoutPath = R.layout.button_view_category;
+    }
+    public DirectoryAdapter(String[] directories, Integer[] icons, Integer layoutPath) {
+        this.directories = directories;
+        this.icons = icons;
+        this.layoutPath = R.layout.button_view_category;
     }
 
     @NonNull
@@ -32,7 +40,7 @@ public class DirectoryAdapter extends RecyclerView.Adapter<DirectoryViewHolder> 
 
         Context context = parent.getContext();
         View categoryView =  LayoutInflater.from(context)
-                .inflate(R.layout.button_view_category, parent, false);
+                .inflate(layoutPath, parent, false);
 
         Drawable buttonShape = ResourcesCompat.getDrawable(parent.getResources(), R.drawable.button_shape, null);
 
