@@ -60,6 +60,7 @@ public abstract class MainLanguageActivity extends AppCompatActivity implements 
         openCategory(onPress.getData());
     }
 
+    // TODO: move this up above any bus events, it's hard to read.
     @Override
     public void onAttachFragment(Fragment fragment) {
         super.onAttachFragment(fragment);

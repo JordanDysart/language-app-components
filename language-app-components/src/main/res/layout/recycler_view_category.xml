@@ -6,8 +6,8 @@
     android:name="com.jordandysart.languageappcomponents.fragment.CategoryFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
     app:layoutManager="GridLayoutManager"
 
     tools:listitem="@layout/fragment_language" />
