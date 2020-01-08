@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jordandysart.languageappcomponents.R;
@@ -21,11 +22,15 @@ public class DirectoryViewHolder extends RecyclerView.ViewHolder implements View
     private ImageView imageView;
 
 
-    public DirectoryViewHolder(View categoryView, Drawable buttonShape) {
+    public DirectoryViewHolder(View categoryView, @Nullable Drawable buttonShape) {
         super(categoryView);
         this.imageView = categoryView.findViewById(R.id.category_icon_view);
         this.textView = categoryView.findViewById(R.id.category_text_view);
-        categoryView.setBackground(buttonShape);
+        if (null != buttonShape) {
+            categoryView.setBackground(buttonShape);
+        }
+        categoryView.setOnClickListener(this);
+
     }
 
     public TextView getTextView() {

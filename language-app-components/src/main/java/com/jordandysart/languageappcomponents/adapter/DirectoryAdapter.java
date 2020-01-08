@@ -51,7 +51,10 @@ public class DirectoryAdapter extends RecyclerView.Adapter<DirectoryViewHolder> 
     public void onBindViewHolder(@NonNull DirectoryViewHolder holder, int position) {
         holder.getTextView().setText(directories[position]);
         if (null != icons) {
-            holder.getImageView().setBackgroundResource(icons[position]);
+
+
+            // TODO commit this
+            holder.getImageView().setImageResource(icons[position]);
         }
     }
 
